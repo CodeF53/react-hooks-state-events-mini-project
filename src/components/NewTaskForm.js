@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function NewTaskForm({ CATEGORIES, addTask }) {
+function NewTaskForm({ categories, onTaskFormSubmit }) {
   const [details, setDetails] = useState("")
   const [category, setCategory] = useState("code")
 
@@ -10,7 +10,7 @@ function NewTaskForm({ CATEGORIES, addTask }) {
       text: details,
       category: category
     }
-    addTask(task)
+    onTaskFormSubmit(task)
   }
 
   return (
@@ -22,7 +22,7 @@ function NewTaskForm({ CATEGORIES, addTask }) {
       <label>
         Category
         <select name="category" value={category} onChange={(e)=>setCategory(e.target.value)}>
-          {CATEGORIES.map((cat)=>(<option key={cat} value={cat}>{cat}</option>))}
+          {categories.map((cat)=>(<option key={cat} value={cat}>{cat}</option>))}
         </select>
       </label>
       <input type="submit" value="Add task" />
