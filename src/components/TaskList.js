@@ -1,9 +1,22 @@
 import React from "react";
+import Task from "./Task";
 
-function TaskList() {
+function TaskList({ TASKS, deleteTask }) {
+  let tasks = []
+  for (let i = 0; i<TASKS.length; i++) {
+    tasks.push((
+      <Task 
+        text={TASKS[i].text} 
+        category={TASKS[i].category}
+        deleteCallback={()=>{deleteTask(i)}}
+        key={i}
+      />
+    ))
+  }
+
   return (
     <div className="tasks">
-      {/* display a list of tasks using Task component */}
+      {tasks}
     </div>
   );
 }
